@@ -1,0 +1,77 @@
+/* economica-700 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Economica";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./assets/fonts/economica-v17-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    text-decoration: none;
+    position: relative;
+    list-style: none;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+    background: initial;
+    border: initial;
+}
+
+body {
+    background: #082533;
+    font-family: Economica;
+    min-height: 100dvh;
+}
+
+.mainHeader,
+.mainFooter {
+    padding: 24px;
+    text-align: center;
+    background-color: #0a3a4d;
+    color: white;
+}
+
+.mainHeader {
+    font-size: 3rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+
+}
+
+#book-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #082533;
+    padding: 20px;
+}
+
+.book-card {
+    width: 300px;
+    height: 500px;
+    background: #4d140a;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
