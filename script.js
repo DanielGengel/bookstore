@@ -4,10 +4,11 @@ const container = document.getElementById("book-container");
 function renderBooks() {
     container.innerHTML = "";
 
+    
     for (let index = 0; index < books.length; index++) {
         let book = books[index];
-
-        container.innerHTML += `
+let html = "";
+        html += `
             <div class="book-card">
  ${book.name}<br>
       ${book.author}<br>  
@@ -18,11 +19,30 @@ function renderBooks() {
            ${book.genre}<br>
 
 
+           <h3>Kommentare:</h3>
 
-      
+`;
 
 
+// Kommentare rendern
+        for (let i = 0; i < book.comments.length; i++) {
 
-        `;
-    }
+            let comment = book.comments[i];
+
+            html += `
+                <p>
+                    <b>${comment.name}</b>: 
+                    ${comment.comment}
+                </p>
+            `;
+        }
+
+        html += `</div>`;
+
+        container.innerHTML += html;
 }
+
+}
+
+
+
