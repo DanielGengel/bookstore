@@ -1,30 +1,54 @@
 function getMainTemplate(index) {
     return `
-            <div class="book-card">
+        <section class="book-card">
+            <header class="book-header">
+                ${books[index].name}
+            </header>
 
-                <div class="book-header">
-                    ${books[index].name}
-                </div>
+            <picture class="book-image">
+                <img src="./assets/img/book.svg" alt="${books[index].name}">
+            </picture>
 
-                <div class="book-image">
-                    <img src="./assets/img/book.svg" alt="${books[index].name}">
-                </div>
+            <div class="book-top-info">
+                <div class="price">
+                    ${books[index].price.toFixed(2)} EUR
+            </div>
 
-                <div class="book-top-info">
-                    <div class="price">
-                        ${books[index].price.toFixed(2)} EUR
-                </div>
-
-                <div class="book-details">
-                    <div><b>Author</b> : ${books[index].author}</div>
-                    <div><b>Erscheinungsjahr</b> : ${books[index].publishedYear}</div>
-                    <div><b>Genre</b> : ${books[index].genre}</div>
-                </div>
-
-                <div class="comments-section">
-                    <h3>Kommentare:</h3>
+            <div class="likes">
+                    <span>${books[index].likes}</span>
+                    <span class="heart ${books[index].liked ? "liked" : ""}">
+                        
+                        <button class="btnLikeUnlike ${books[index].liked ? "liked" : ""}" data-index="${index}">
+                            <img id="book-liked-${index}" ${books[index].liked ? "liked" : ""}" src="./assets/img/white-heart-icon.svg" alt="Heart icon">
+                        </button>
+                    </span>
                 </div>
             </div>
+
+            <div class="details-section">
+                <table class="book-details-table">
+                    <tr>
+                        <td class="table-left">
+                            <b>Author:</b>
+                        </td>
+                        <td class="table-right">${books[index].author}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-left">
+                            <b>Erscheinungsjahr:</b>
+                        </td>
+                        <td class="table-right">${books[index].publishedYear}</td>
+                    </tr>
+                    <tr>
+                        <td class="table-left">
+                            <b>Genre:</b>
+                        </td>
+                        <td class="table-right">${books[index].genre}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="comments-section">
+            <h3>Kommentare:</h3>
         `;
 }
 
@@ -34,9 +58,28 @@ function getNoCommentsTemplate() {
 
 function getCommentsTemplate(index, index2) {
     return `
-                    <p>
-                        <b>${books[index].comments[index2].name}</b>:
-                        ${books[index].comments[index2].comment}
-                    </p>
-                `;
+        <table class="comments-table">
+            <tr>
+                <td class="comment-user">
+                    ${books[index].comments[index2].name}:
+                </td>
+
+                <td class="comment-text">
+                   ${books[index].comments[index2].comment}
+                </td>
+            </tr>
+        </table>
+    `;
+}
+
+function getCommentInputTemplate(index) {
+    // end-div for previous div
+    // At the end end-section for book-card
+    return ` </div>
+        <div class="comment-input">
+            <input id="comment-input-${index}" type="text" placeholder="Schreibe deinen Kommentar...">
+            <button class="btnAddComment" data-index="${index}">➤</button>
+        </div>
+    </section>
+    `;
 }

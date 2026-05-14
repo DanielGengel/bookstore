@@ -69,11 +69,12 @@ main {
 .book-card {
     width: 300px;
     height: 500px;
-    background: #4d140a;
+    background: #0a3a4d;
     color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    filter: drop-shadow(0px 0px 20px rgb(163, 154, 154));
 }
 
 .book-header {
@@ -90,11 +91,145 @@ main {
     padding: 20px;
     border-bottom: 1px solid #2e6677;
     flex-shrink: 0;
-   
 }
 
 .book-image img {
     width: 80px;
-    /* svg icon in white */
+    /* svg icon (header image) in white */
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7466%) hue-rotate(86deg) brightness(119%) contrast(95%);
 }
+
+.book-top-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    flex-shrink: 0;
+}
+
+.price {
+    color: #f20a0a;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* .heart {
+    color: red;
+    font-size: 22px;
+} */
+
+.btnLikeUnlike img {
+    width: 40px;
+    height: 40px;
+    
+}
+
+.btnLikeUnlike.liked {
+    /* svg icon (heart) in red if liked === true */
+    filter: brightness(0) saturate(100%) invert(33%) sepia(86%) saturate(6079%) hue-rotate(0deg) brightness(100%) contrast(108%);
+}
+
+/* .book-details {
+    padding: 0 15px 15px;
+    line-height: 1.8;
+    border-bottom: 1px solid #2e6677;
+    flex-shrink: 0;
+} */
+
+.details-section {
+    padding-left: 15px;
+    flex: 1; 
+    border-bottom: 1px solid #2e6677;
+    min-height: 0;
+}
+
+.comments-section {
+    padding: 15px;
+    flex: 1; 
+    overflow-y: auto; /* scrollbar */
+    min-height: 0;
+}
+
+.comments-table, 
+.book-details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comments-table tr {
+    border-bottom: 1px solid #2e6677;
+}
+
+.comments-table td {
+    padding: 8px 0;
+    vertical-align: top;
+}
+
+.comment-user,
+.table-left {
+    width: 110px;
+    font-weight: bold;
+    color: white;
+    padding-right: 10px;
+}
+
+.comment-text,
+.table-right {
+    color: #d9edf5;
+    line-height: 1.4;
+}
+
+/* Scrollbar for comment section */
+.comments-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.comments-section::-webkit-scrollbar-thumb {
+    background: #4fd1ff;
+    border-radius: 10px;
+}
+
+.comments-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* .comment {
+    margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1.5;
+} */
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-input {
+    display: flex;
+    border-top: 1px solid #2e6677;
+    flex-shrink: 0;
+}
+
+.comment-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+}
+
+.comment-input button {
+    border: none;
+    background: transparent;
+    color: #4fd1ff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
