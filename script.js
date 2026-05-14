@@ -3,46 +3,73 @@ const container = document.getElementById("book-container");
 
 function renderBooks() {
     container.innerHTML = "";
+    let html = "";
 
-    
     for (let index = 0; index < books.length; index++) {
-        let book = books[index];
-let html = "";
-        html += `
-            <div class="book-card">
- ${book.name}<br>
-      ${book.author}<br>  
-       ${book.liked}<br>
-        ${book.likes}<br>
-         ${book.price}<br>
-          ${book.publishedYear}<br>
-           ${book.genre}<br>
+        const bookHTML = getMainTemplate(index);
+        //bookHTML += getCommentTemplate(i);
 
+container.innerHTML += bookHTML;
+    }
+    
 
-           <h3>Kommentare:</h3>
+    //     for (let index = 0; index < books.length; index++) {
+    //         let book = books[index];
+    //         html = "";
+    //         html += `
+    //             <div class="book-card">
 
-`;
+    //                 <div class="book-header">
+    //                     ${book.name}
+    //                 </div>
 
+    //                 <div class="book-image">
+    //                     <img src="./assets/img/book.svg" alt="${book.name}">
+    //                 </div>
 
-// Kommentare rendern
-        for (let i = 0; i < book.comments.length; i++) {
+    //                 <div class="book-top-info">
+    //                     <div class="price">
+    //                         ${book.price.toFixed(2)} EUR
+    //                 </div>
 
-            let comment = book.comments[i];
+    //                 <div class="book-details">
+    //                     <div><b>Author</b> : ${book.author}</div>
+    //                     <div><b>Erscheinungsjahr</b> : ${book.publishedYear}</div>
+    //                     <div><b>Genre</b> : ${book.genre}</div>
+    //                 </div>
 
-            html += `
-                <p>
-                    <b>${comment.name}</b>: 
-                    ${comment.comment}
-                </p>
-            `;
-        }
+    //                 <div class="comments-section">
+    //                     <h3>Kommentare:</h3>
 
-        html += `</div>`;
+    //                 </div>
 
-        container.innerHTML += html;
+    //             </div>
+
+    //       ${book.author}<br>
+    //        ${book.liked}<br>
+    //         ${book.likes}<br>
+    //          ${book.price}<br>
+    //           ${book.publishedYear}<br>
+    //            ${book.genre}<br>
+
+    //            <h3>Kommentare:</h3>
+
+    // `;
+
+    //         // Kommentare rendern
+    //         for (let i = 0; i < book.comments.length; i++) {
+    //             let comment = book.comments[i];
+
+    //             html += `
+    //                 <p>
+    //                     <b>${comment.name}</b>:
+    //                     ${comment.comment}
+    //                 </p>
+    //             `;
+    //         }
+
+    //         html += `</div>`;
+
+    //         container.innerHTML += html;
+    //     }
 }
-
-}
-
-
-
