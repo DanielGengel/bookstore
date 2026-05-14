@@ -1,5 +1,4 @@
 function getMainTemplate(index) {
-    
     return `
             <div class="book-card">
 
@@ -24,20 +23,20 @@ function getMainTemplate(index) {
 
                 <div class="comments-section">
                     <h3>Kommentare:</h3>
-
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         `;
+}
+
+function getNoCommentsTemplate() {
+    return `Noch keine Kommetare vorhanden.`;
+}
+
+function getCommentsTemplate(index, index2) {
+    return `
+                    <p>
+                        <b>${books[index].comments[index2].name}</b>:
+                        ${books[index].comments[index2].comment}
+                    </p>
+                `;
 }
