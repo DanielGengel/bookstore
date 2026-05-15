@@ -185,7 +185,7 @@ main {
     line-height: 1.4;
 }
 
-/* Scrollbar for comment section */
+/* Show scrollbar for comment section */
 .comments-section::-webkit-scrollbar {
     width: 6px;
 }
@@ -195,9 +195,9 @@ main {
     border-radius: 10px;
 }
 
-.comments-section::-webkit-scrollbar-track {
+/* .comments-section::-webkit-scrollbar-track {
     background: transparent;
-}
+} */
 
 /* .comment {
     margin-bottom: 12px;
