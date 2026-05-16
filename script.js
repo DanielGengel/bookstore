@@ -6,6 +6,7 @@ function renderBooks() {
     let bookHTML = "";
     for (let index = 0; index < books.length; index++) {
         bookHTML = getMainTemplate(index);
+
         if (books[index].comments.length === 0) {
             bookHTML += getNoCommentsTemplate();
         } else {
@@ -17,52 +18,32 @@ function renderBooks() {
         container.innerHTML += bookHTML;
     }
 
-    addEventsToButtons(".btnAddComment", addComment);
-    addEventsToButtons(".btnLikeUnlike", addLikeOrUnlike);
+    // add enter keydown to textfield, klick events to buttons after html render...
+    for (let index = 0; index < books.length; index++) {
+        addEventToTextfield(`comment-input-${index}`, addComment, index);
+        addEventToButton(".btnAddComment", addComment, index);
+        addEventToButton(".btnLikeUnlike", addLikeOrUnlike, index);
+    }
 }
 
-function addEventsToButtons(buttonClass, functionToRun) {
+function addEventToTextfield(elementID, functionToRun, index) {
+    const input = document.getElementById(elementID);
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            functionToRun(index);
+        }
+    });
+}
+
+function addEventToButton(buttonClass, functionToRun, index) {
     const buttons = document.querySelectorAll(buttonClass);
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function (event) {
+        buttons[index].addEventListener("click", function (event) {
             event.stopPropagation();
-            const index = buttons[i].dataset.index;
+            // const index = buttons[buttonIndex].dataset.index;
             functionToRun(index);
         });
-    }
 }
 
-function addComment(index) {
-    const input = document.getElementById(`comment-input-${index}`);
-    const newComment = input.value.trim();
 
-    if (newComment === "") return;
-
-    books[index].comments.splice(0, 0, {
-        name: "Nico sagt",
-        comment: newComment,
-    });
-
-    updateLocalStorage();
-    renderBooks();
-}
-
-function addLikeOrUnlike(index) {
-
-    const input = document.getElementById(`book-liked-${index}`);
-    if (books[index].liked) {
-        books[index].liked = false;
-        books[index].likes -= 1;
-    } else {
-        books[index].liked = true;
-        books[index].likes += 1;
-    }
-
-    updateLocalStorage();
-    renderBooks();
-}
-
-function updateLocalStorage() {
-    localStorage.setItem("books", JSON.stringify(books));
-}
 
